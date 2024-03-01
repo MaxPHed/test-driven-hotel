@@ -1,0 +1,118 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "TestDrivenHotel.BLL/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "TestDrivenHotel.UI": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/TestDrivenHotel.BLL.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TestDrivenHotel.BLL.dll": {}
+        }
+      },
+      "TestDrivenHotel.UI/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/TestDrivenHotel.UI.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TestDrivenHotel.UI.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      }
+    }
+  },
+  "libraries": {
+    "TestDrivenHotel.BLL/1.0.0": {
+      "type": "project",
+      "path": "../TestDrivenHotel.BLL/TestDrivenHotel.BLL.csproj",
+      "msbuildProject": "../TestDrivenHotel.BLL/TestDrivenHotel.BLL.csproj"
+    },
+    "TestDrivenHotel.UI/1.0.0": {
+      "type": "project",
+      "path": "../TestDrivenHotel.UI/TestDrivenHotel.UI.csproj",
+      "msbuildProject": "../TestDrivenHotel.UI/TestDrivenHotel.UI.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "TestDrivenHotel.BLL >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\jaama\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering avancerad 2(2)\\Program\\TestDrivenHotel\\TestDrivenHotel.Domain\\TestDrivenHotel.Domain.csproj",
+      "projectName": "TestDrivenHotel.Domain",
+      "projectPath": "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering avancerad 2(2)\\Program\\TestDrivenHotel\\TestDrivenHotel.Domain\\TestDrivenHotel.Domain.csproj",
+      "packagesPath": "C:\\Users\\jaama\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering avancerad 2(2)\\Program\\TestDrivenHotel\\TestDrivenHotel.Domain\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\jaama\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering avancerad 2(2)\\Program\\TestDrivenHotel\\TestDrivenHotel.BLL\\TestDrivenHotel.BLL.csproj": {
+              "projectPath": "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering avancerad 2(2)\\Program\\TestDrivenHotel\\TestDrivenHotel.BLL\\TestDrivenHotel.BLL.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
