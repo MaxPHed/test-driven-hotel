@@ -49,14 +49,17 @@ namespace TestDrivenHotel.BLL
             return db.Rooms;
         }
 
-        public List<Room> ReturnAllAvailableRooms(List<DateTime> dates)
+        public List<Room> ReturnAllAvailableRooms(List<DateTime> dates, string? roomType)
         {
             List<Room> availableRooms = new();
             foreach (var room in db.Rooms)
             {
                 if (AreAllDatesAvailable(room, dates))
                 {
-                    availableRooms.Add(room);
+                    if (string.IsNullOrEmpty(roomType) || room.Type.Equals(roomType))
+                    {
+                        availableRooms.Add(room);
+                    }
                 }
             }
             return availableRooms;

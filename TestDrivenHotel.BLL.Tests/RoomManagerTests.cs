@@ -127,7 +127,7 @@ namespace TestDrivenHotel.BLL.Tests
             List<DateTime> dates = new() { new DateTime(2024, 3, 1), new DateTime(2024, 3, 2), new DateTime(2024, 3, 3) };
 
             //When
-            List<Room> expectedRooms = roomManager.ReturnAllAvailableRooms(dates);
+            List<Room> expectedRooms = roomManager.ReturnAllAvailableRooms(dates, null);
             List<Room> availableRooms = roomManager.returnAllRooms();
 
             expectedRooms.Should().BeEquivalentTo(availableRooms);
@@ -145,11 +145,63 @@ namespace TestDrivenHotel.BLL.Tests
             roomManager.bookRoom(16, dates, "Arne Anka");
 
             //When
-            List<Room> actualResult = roomManager.ReturnAllAvailableRooms(dates);
+            List<Room> actualResult = roomManager.ReturnAllAvailableRooms(dates, null);
 
             //Then
             actualResult.Count().Should().Be(16);
+        }
 
+        [Fact]
+        public void ReturnsAllAvailableRooms_AllRoomsAreBooked_ReturnsEmptyList()
+        {
+            //Given
+            RoomManager roomManager = new();
+            List<DateTime> dates = new() { new DateTime(2024, 3, 1), new DateTime(2024, 3, 2), new DateTime(2024, 3, 3) };
+            roomManager.bookRoom(1, dates, "Arne Anka");
+            roomManager.bookRoom(2, dates, "Arne Anka");
+            roomManager.bookRoom(3, dates, "Arne Anka");
+            roomManager.bookRoom(4, dates, "Arne Anka");
+            roomManager.bookRoom(5, dates, "Arne Anka");
+            roomManager.bookRoom(6, dates, "Arne Anka");
+            roomManager.bookRoom(7, dates, "Arne Anka");
+            roomManager.bookRoom(8, dates, "Arne Anka");
+            roomManager.bookRoom(9, dates, "Arne Anka");
+            roomManager.bookRoom(10, dates, "Arne Anka");
+            roomManager.bookRoom(11, dates, "Arne Anka");
+            roomManager.bookRoom(12, dates, "Arne Anka");
+            roomManager.bookRoom(13, dates, "Arne Anka");
+            roomManager.bookRoom(14, dates, "Arne Anka");
+            roomManager.bookRoom(15, dates, "Arne Anka");
+            roomManager.bookRoom(16, dates, "Arne Anka");
+            roomManager.bookRoom(17, dates, "Arne Anka");
+            roomManager.bookRoom(18, dates, "Arne Anka");
+            roomManager.bookRoom(19, dates, "Arne Anka");
+            roomManager.bookRoom(20, dates, "Arne Anka");
+
+            //When
+            List<Room> actualResult = roomManager.ReturnAllAvailableRooms(dates, null);
+
+            //Then
+            actualResult.Count().Should().Be(0);
+        }
+
+        [Fact]
+        public void ReturnsAllEmptyRooms_RoomTypeSpecified_ShouldReturnEmptyRoomsMathcingType()
+        {
+            //Given
+            RoomManager roomManager = new();
+            List<DateTime> dates = new() { new DateTime(2024, 3, 1), new DateTime(2024, 3, 2), new DateTime(2024, 3, 3) };
+            roomManager.bookRoom(1, dates, "Arne Anka");
+            roomManager.bookRoom(5, dates, "Arne Anka");
+            roomManager.bookRoom(8, dates, "Arne Anka");
+            roomManager.bookRoom(16, dates, "Arne Anka");
+
+            //When
+            List<Room> actualResult = roomManager.ReturnAllAvailableRooms(dates, "Single");
+
+            //THen
+            actualResult.Count().Should().Be(8);
+            actualResult.Should().OnlyContain(room => room.Type == "Single");
         }
     }
 }
