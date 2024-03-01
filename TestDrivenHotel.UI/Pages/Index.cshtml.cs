@@ -1,19 +1,20 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using TestDrivenHotel.BLL;
+using TestDrivenHotel.Domain;
 
 namespace TestDrivenHotel.UI.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
-        {
-            _logger = logger;
-        }
+        public List<Room> Rooms;
+        private RoomManager manager = new();
 
         public void OnGet()
         {
+            if (Rooms == null)
+            {
+                Rooms = manager.returnAllRooms();
+            }
 
         }
     }

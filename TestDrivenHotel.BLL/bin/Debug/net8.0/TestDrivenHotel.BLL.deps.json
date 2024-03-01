@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "TestDrivenHotel.BLL/1.0.0": {
+        "dependencies": {
+          "TestDrivenHotel.Domain": "1.0.0"
+        },
+        "runtime": {
+          "TestDrivenHotel.BLL.dll": {}
+        }
+      },
+      "TestDrivenHotel.Domain/1.0.0": {
+        "runtime": {
+          "TestDrivenHotel.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TestDrivenHotel.BLL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "TestDrivenHotel.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

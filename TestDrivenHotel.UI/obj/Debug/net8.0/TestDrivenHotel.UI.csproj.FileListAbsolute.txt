@@ -28,3 +28,10 @@ C:\Users\jaama\Documents\OOPAI\Objektorienterad programmering avancerad 2(2)\Pro
 C:\Users\jaama\Documents\OOPAI\Objektorienterad programmering avancerad 2(2)\Program\TestDrivenHotel\TestDrivenHotel.UI\obj\Debug\net8.0\TestDrivenHotel.UI.pdb
 C:\Users\jaama\Documents\OOPAI\Objektorienterad programmering avancerad 2(2)\Program\TestDrivenHotel\TestDrivenHotel.UI\obj\Debug\net8.0\TestDrivenHotel.UI.genruntimeconfig.cache
 C:\Users\jaama\Documents\OOPAI\Objektorienterad programmering avancerad 2(2)\Program\TestDrivenHotel\TestDrivenHotel.UI\obj\Debug\net8.0\ref\TestDrivenHotel.UI.dll
+C:\Users\jaama\Documents\OOPAI\Objektorienterad programmering avancerad 2(2)\Program\TestDrivenHotel\TestDrivenHotel.UI\bin\Debug\net8.0\TestDrivenHotel.BLL.dll
+C:\Users\jaama\Documents\OOPAI\Objektorienterad programmering avancerad 2(2)\Program\TestDrivenHotel\TestDrivenHotel.UI\bin\Debug\net8.0\TestDrivenHotel.Domain.dll
+C:\Users\jaama\Documents\OOPAI\Objektorienterad programmering avancerad 2(2)\Program\TestDrivenHotel\TestDrivenHotel.UI\bin\Debug\net8.0\TestDrivenHotel.BLL.pdb
+C:\Users\jaama\Documents\OOPAI\Objektorienterad programmering avancerad 2(2)\Program\TestDrivenHotel\TestDrivenHotel.UI\bin\Debug\net8.0\TestDrivenHotel.Domain.pdb
+C:\Users\jaama\Documents\OOPAI\Objektorienterad programmering avancerad 2(2)\Program\TestDrivenHotel\TestDrivenHotel.UI\obj\Debug\net8.0\TestDrivenHotel.UI.csproj.AssemblyReference.cache
+C:\Users\jaama\Documents\OOPAI\Objektorienterad programmering avancerad 2(2)\Program\TestDrivenHotel\TestDrivenHotel.UI\obj\Debug\net8.0\TestDrivenHotel.UI.sourcelink.json
+C:\Users\jaama\Documents\OOPAI\Objektorienterad programmering avancerad 2(2)\Program\TestDrivenHotel\TestDrivenHotel.UI\obj\Debug\net8.0\TestDrivenHotel.UI.csproj.CopyComplete
