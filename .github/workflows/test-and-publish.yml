@@ -1,0 +1,84 @@
+name: Test and publish
+on:
+    push:
+        branches:
+         - master
+    pull_request:
+        branches:
+         - master
+jobs: 
+    test-project:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out code
+              uses: actions/checkout@v4.1.1
+
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v4.0.0
+              with:
+                dotnet-version: '8'
+
+            - name: Cach dependencies
+              uses: actions/cache@v4.0.0
+              with:
+                path: ~/.nuget
+                key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }} #dotnet restore --use-lock-file måste användas innan i consolen!
+
+            - name: Install dependencies
+              run: dotnet restore
+
+            - name: Build app
+              run: dotnet build --no-restore
+
+            - name: Run test
+              run: dotnet test --no-restore --verbosity normal  
+
+            - name: Print job complete
+              run: echo "Test job complete $(date)!"
+
+    publish-project:
+        runs-on: ubuntu-latest
+        needs: test-project
+        steps:
+            - name: Print job started
+              run: echo "Publish job started $(date)!"
+
+            - name: Check out code
+              uses: actions/checkout@v4.1.1
+
+            - name: Setup .NET
+              uses: actions/setup-dotnet@v4.0.0
+              with:
+                dotnet-version: '8'
+
+            - name: Cach dependencies
+              uses: actions/cache@v4.0.0
+              with:
+                path: ~/.nuget
+                key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+
+            - name: Install dependencies
+              run: dotnet restore
+
+            - name: Build app
+              run: dotnet build --configuration Release --no-restore
+
+            - name: Create publish files
+              run: dotnet publish --configuration Release --output ./publish
+
+            - name: Deploy to azure
+              uses: azure/webapps-deploy@v3
+              with:
+                app-name: 'maxtestdrivenhotel' #Appnamnet från azure o
+                publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE}}
+                package: './publish'
+    
+    create-issue:
+        runs-on: ubuntu-latest
+        needs: test-project
+        if: failure()
+        steps:
+            - name: Print job started
+              run: |
+                echo "Test failed..."
+                echo "Creating issue..."
