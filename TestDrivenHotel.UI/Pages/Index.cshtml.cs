@@ -10,7 +10,7 @@ namespace TestDrivenHotel.UI.Pages
         public List<Room> Rooms { get; set; }
         private readonly RoomManager manager;
         [BindProperty]
-        public DateTime? StartingDate { get; set; }
+        public DateTime StartingDate { get; set; }
 
         [BindProperty]
         public DateTime EndingDate { get; set; }
