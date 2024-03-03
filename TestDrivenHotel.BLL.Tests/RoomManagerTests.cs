@@ -32,7 +32,7 @@ namespace TestDrivenHotel.BLL.Tests
             //When
             Room room = roomManager.db.Rooms.Where(r => r.Id == 1).FirstOrDefault();
             List<DateTime> dates = new() { new DateTime(2024, 3, 1) };
-            roomManager.bookRoom(1, dates, "John Doe");
+            roomManager.BookRoomById(1, dates, "John Doe");
             //Then
 
             room.Should().BeEquivalentTo(actualRoom);
@@ -47,7 +47,7 @@ namespace TestDrivenHotel.BLL.Tests
 
             //When
             string expectedResult = "Booking successfull";
-            string result = roomManager.bookRoom(1, dates, "John Doe");
+            string result = roomManager.BookRoomById(1, dates, "John Doe");
 
             //Then
             result.Should().Be(expectedResult);
@@ -59,11 +59,11 @@ namespace TestDrivenHotel.BLL.Tests
             //Given
             RoomManager roomManager = new();
             List<DateTime> dates = new() { new DateTime(2024, 3, 1) };
-            roomManager.bookRoom(1, dates, "John Doe");
+            roomManager.BookRoomById(1, dates, "John Doe");
 
             //When
             string expectedResult = "Date is already booked";
-            string result = roomManager.bookRoom(1, dates, "John Doe");
+            string result = roomManager.BookRoomById(1, dates, "John Doe");
 
             //Then
             result.Should().Be(expectedResult);
@@ -75,11 +75,11 @@ namespace TestDrivenHotel.BLL.Tests
             //Given
             RoomManager roomManager = new();
             List<DateTime> dates = new() { new DateTime(2024, 3, 1) };
-            roomManager.bookRoom(1, dates, "John Doe");
+            roomManager.BookRoomById(1, dates, "John Doe");
 
             //When
 
-            Action test = () => roomManager.bookRoom(100, dates, "John Doe");
+            Action test = () => roomManager.BookRoomById(100, dates, "John Doe");
 
             //Then
             test.Should().Throw<ArgumentException>();
@@ -94,7 +94,7 @@ namespace TestDrivenHotel.BLL.Tests
 
             //When
             string expectedResult = "Booking successfull";
-            string result = roomManager.bookRoom(1, dates, "John Doe");
+            string result = roomManager.BookRoomById(1, dates, "John Doe");
 
             //Then
             result.Should().Be(expectedResult);
@@ -113,7 +113,7 @@ namespace TestDrivenHotel.BLL.Tests
 
             //When
             string expectedResult = "Date is already booked";
-            string result = roomManager.bookRoom(1, dates, "John Doe");
+            string result = roomManager.BookRoomById(1, dates, "John Doe");
 
             //Then
             result.Should().Be(expectedResult);
@@ -139,10 +139,10 @@ namespace TestDrivenHotel.BLL.Tests
             //Given
             RoomManager roomManager = new();
             List<DateTime> dates = new() { new DateTime(2024, 3, 1), new DateTime(2024, 3, 2), new DateTime(2024, 3, 3) };
-            roomManager.bookRoom(1, dates, "Arne Anka");
-            roomManager.bookRoom(5, dates, "Arne Anka");
-            roomManager.bookRoom(8, dates, "Arne Anka");
-            roomManager.bookRoom(16, dates, "Arne Anka");
+            roomManager.BookRoomById(1, dates, "Arne Anka");
+            roomManager.BookRoomById(5, dates, "Arne Anka");
+            roomManager.BookRoomById(8, dates, "Arne Anka");
+            roomManager.BookRoomById(16, dates, "Arne Anka");
 
             //When
             List<Room> actualResult = roomManager.ReturnAllAvailableRooms(dates, null);
@@ -157,26 +157,26 @@ namespace TestDrivenHotel.BLL.Tests
             //Given
             RoomManager roomManager = new();
             List<DateTime> dates = new() { new DateTime(2024, 3, 1), new DateTime(2024, 3, 2), new DateTime(2024, 3, 3) };
-            roomManager.bookRoom(1, dates, "Arne Anka");
-            roomManager.bookRoom(2, dates, "Arne Anka");
-            roomManager.bookRoom(3, dates, "Arne Anka");
-            roomManager.bookRoom(4, dates, "Arne Anka");
-            roomManager.bookRoom(5, dates, "Arne Anka");
-            roomManager.bookRoom(6, dates, "Arne Anka");
-            roomManager.bookRoom(7, dates, "Arne Anka");
-            roomManager.bookRoom(8, dates, "Arne Anka");
-            roomManager.bookRoom(9, dates, "Arne Anka");
-            roomManager.bookRoom(10, dates, "Arne Anka");
-            roomManager.bookRoom(11, dates, "Arne Anka");
-            roomManager.bookRoom(12, dates, "Arne Anka");
-            roomManager.bookRoom(13, dates, "Arne Anka");
-            roomManager.bookRoom(14, dates, "Arne Anka");
-            roomManager.bookRoom(15, dates, "Arne Anka");
-            roomManager.bookRoom(16, dates, "Arne Anka");
-            roomManager.bookRoom(17, dates, "Arne Anka");
-            roomManager.bookRoom(18, dates, "Arne Anka");
-            roomManager.bookRoom(19, dates, "Arne Anka");
-            roomManager.bookRoom(20, dates, "Arne Anka");
+            roomManager.BookRoomById(1, dates, "Arne Anka");
+            roomManager.BookRoomById(2, dates, "Arne Anka");
+            roomManager.BookRoomById(3, dates, "Arne Anka");
+            roomManager.BookRoomById(4, dates, "Arne Anka");
+            roomManager.BookRoomById(5, dates, "Arne Anka");
+            roomManager.BookRoomById(6, dates, "Arne Anka");
+            roomManager.BookRoomById(7, dates, "Arne Anka");
+            roomManager.BookRoomById(8, dates, "Arne Anka");
+            roomManager.BookRoomById(9, dates, "Arne Anka");
+            roomManager.BookRoomById(10, dates, "Arne Anka");
+            roomManager.BookRoomById(11, dates, "Arne Anka");
+            roomManager.BookRoomById(12, dates, "Arne Anka");
+            roomManager.BookRoomById(13, dates, "Arne Anka");
+            roomManager.BookRoomById(14, dates, "Arne Anka");
+            roomManager.BookRoomById(15, dates, "Arne Anka");
+            roomManager.BookRoomById(16, dates, "Arne Anka");
+            roomManager.BookRoomById(17, dates, "Arne Anka");
+            roomManager.BookRoomById(18, dates, "Arne Anka");
+            roomManager.BookRoomById(19, dates, "Arne Anka");
+            roomManager.BookRoomById(20, dates, "Arne Anka");
 
             //When
             List<Room> actualResult = roomManager.ReturnAllAvailableRooms(dates, null);
@@ -191,10 +191,10 @@ namespace TestDrivenHotel.BLL.Tests
             //Given
             RoomManager roomManager = new();
             List<DateTime> dates = new() { new DateTime(2024, 3, 1), new DateTime(2024, 3, 2), new DateTime(2024, 3, 3) };
-            roomManager.bookRoom(1, dates, "Arne Anka");
-            roomManager.bookRoom(5, dates, "Arne Anka");
-            roomManager.bookRoom(8, dates, "Arne Anka");
-            roomManager.bookRoom(16, dates, "Arne Anka");
+            roomManager.BookRoomById(1, dates, "Arne Anka");
+            roomManager.BookRoomById(5, dates, "Arne Anka");
+            roomManager.BookRoomById(8, dates, "Arne Anka");
+            roomManager.BookRoomById(16, dates, "Arne Anka");
 
             //When
             List<Room> actualResult = roomManager.ReturnAllAvailableRooms(dates, "Single");

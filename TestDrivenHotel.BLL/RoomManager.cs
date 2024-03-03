@@ -6,7 +6,23 @@ namespace TestDrivenHotel.BLL
     public class RoomManager
     {
         public MockRoomDb db = new();
-        public string bookRoom(int roomNumber, List<DateTime> dates, string name)
+        public Room? ReturnFirstRoomByType(List<Room> rooms, string roomType)
+        {
+            return rooms.Where(r => r.Type == roomType).FirstOrDefault();
+        }
+        public string BookRoom(List<DateTime> dates, string roomType, string name)
+        {
+            try
+            {
+                List<Room> Rooms = ReturnAllAvailableRooms(dates, roomType);
+                Room room = ReturnFirstRoomByType(Rooms, roomType);
+                if (room == null) { return "Rummet finns inte kvar"; }
+                return BookRoomById(room.Id, dates, name);
+            }
+            catch (Exception ex)
+            { return ex.Message; };
+        }
+        public string BookRoomById(int roomNumber, List<DateTime> dates, string name)
         {
             try
             {

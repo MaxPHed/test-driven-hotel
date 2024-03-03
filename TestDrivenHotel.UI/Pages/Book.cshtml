@@ -1,0 +1,48 @@
+﻿@page
+@model TestDrivenHotel.UI.Pages.BookModel
+@{
+}
+
+@if (Model.Dates == null || Model.Dates.Count == 0)
+{
+    <h1>Du har inte valt datum, vänligen tryck tillbaka och ange datum</h1>
+}
+else if(Model.RoomType == null)
+{
+    <h1>Du har inte valt rumstyp, vänligen tryck tillbaka och ange rymstyp</h1>
+}
+else
+{
+
+    <h1>Du vill boka 1 @Model.RoomType room</h1>
+    <h2>Datum:</h2>
+    <ul>
+        @foreach (var date in Model.Dates)
+        {
+            <li>@date.ToString("yyyy-MM-dd")</li>
+        }
+    </ul>
+
+
+    <h1>Fyll i ditt namn nedan och tryck bekräfta om du vill göra bokningen</h1>
+
+    <form method="post">
+        <div class="form-control">
+            <label>Namn: </label>
+            <input name-input type="text" asp-for = "Name"/>
+            <button class="btn btn-outline-dark" type="submit">Bekräfta</button>
+        </div>
+    </form>
+}
+
+@if(Model.BookingMessage != null){
+    <h1>@Model.BookingMessage</h1>
+    if (Model.BookingMessage.Equals("Booking successfull"))
+    {
+        <p>Grattis @Model.Name! Du har bokat ett @Model.RoomType för datumen ovan!</p>
+    }
+    else
+    {
+        <p>Någonting gick snett. Vänligen försök igen.</p>
+    }
+}
