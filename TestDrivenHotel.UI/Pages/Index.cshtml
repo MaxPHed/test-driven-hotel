@@ -15,7 +15,7 @@
         </div>
         <div class="mt-2 form-control">
             <label class="form-label" for="starting-date-input">Starting Date:</label>
-            <input id="starting-date-input" type="date" asp-for="StartingDate" value="StartingDate" />
+            <input id="starting-date-input" type="date" asp-for="StartingDate" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
             <label class="form-label" for="ending-date-input">Ending Date:</label>
             <input id="ending-date-input" type="date" asp-for="EndingDate" value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
             <label class="form-label" for="single-room-input">Single Room:</label>
@@ -29,7 +29,8 @@
     </div>
 </form>
 
-@if (Model.Dates != null && Model.Rooms != null)
+@if(Model.CheckAvailabilityPressed == true){
+if (Model.Dates != null && Model.Rooms != null)
 {
     var roomCounts = Model.Rooms
         .GroupBy(room => room.Type)
@@ -45,6 +46,7 @@
         </form>
         
     }
+}
 }
 else
 {

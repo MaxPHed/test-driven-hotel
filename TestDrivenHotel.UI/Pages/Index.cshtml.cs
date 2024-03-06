@@ -18,6 +18,7 @@ namespace TestDrivenHotel.UI.Pages
         public bool SingleRoom { get; set; }
         [BindProperty]
         public bool DoubleRoom { get; set; }
+        public bool CheckAvailabilityPressed { get; set; }
 
         public List<DateTime>? Dates
         {
@@ -30,6 +31,7 @@ namespace TestDrivenHotel.UI.Pages
         }
         public void OnGet()
         {
+            CheckAvailabilityPressed = false;
             if (Rooms == null)
             {
                 if (Dates == null)
@@ -41,7 +43,6 @@ namespace TestDrivenHotel.UI.Pages
                     Rooms = manager.ReturnAllAvailableRooms(Dates, "");
                 }
             }
-
         }
 
         public IActionResult OnPost()
@@ -61,8 +62,6 @@ namespace TestDrivenHotel.UI.Pages
                     myAction = BookRoom("Double");
                     break;
             }
-            //HttpContext.Session.SetObject("Rooms", Rooms);
-            //HttpContext.Session.SetObject("Dates", Dates);
             return myAction;
         }
         public void pressCheckAvailability()
@@ -81,14 +80,11 @@ namespace TestDrivenHotel.UI.Pages
             {
                 Rooms = manager.ReturnAllAvailableRooms(Dates, "");
             }
-            //HttpContext.Session.SetObject("Rooms", Rooms);
+            CheckAvailabilityPressed = true;
         }
 
         public IActionResult BookRoom(string roomType)
         {
-            //Rooms = manager.ReturnAllAvailableRooms(Dates, roomType);
-            //Room roomToBook = Rooms.Where(r => r.Type == roomType).First();
-            //manager.bookRoom(roomToBook.Id, Dates, roomToBook.Type);
             return RedirectToPage("/Book", new { roomType });
         }
     }

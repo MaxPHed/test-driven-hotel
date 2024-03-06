@@ -13,26 +13,30 @@ else if(Model.RoomType == null)
 }
 else
 {
+    if (!Model.RoomBooked)
+    {
+        <h1>Du vill boka 1 @Model.RoomType
+            room</h1>
+        <h2>Datum:</h2>
+        <ul>
+            @foreach (var date in Model.Dates)
+            {
+                <li>@date.ToString("yyyy-MM-dd")</li>
+            }
+        </ul>
 
-    <h1>Du vill boka 1 @Model.RoomType room</h1>
-    <h2>Datum:</h2>
-    <ul>
-        @foreach (var date in Model.Dates)
-        {
-            <li>@date.ToString("yyyy-MM-dd")</li>
-        }
-    </ul>
+
+        <h1>Fyll i ditt namn nedan och tryck bekräfta om du vill göra bokningen</h1>
 
 
-    <h1>Fyll i ditt namn nedan och tryck bekräfta om du vill göra bokningen</h1>
-
-    <form method="post">
-        <div class="form-control">
-            <label>Namn: </label>
-            <input name-input type="text" asp-for = "Name"/>
-            <button class="btn btn-outline-dark" type="submit">Bekräfta</button>
-        </div>
-    </form>
+        <form method="post">
+            <div class="form-control">
+                <label>Namn: </label>
+                <input name-input type="text" asp-for = "Name"/>
+                <button class="btn btn-outline-dark" type="submit">Bekräfta</button>
+            </div>
+        </form>
+    }
 }
 
 @if(Model.BookingMessage != null){
@@ -40,6 +44,7 @@ else
     if (Model.BookingMessage.Equals("Booking successfull"))
     {
         <p>Grattis @Model.Name! Du har bokat ett @Model.RoomType för datumen ovan!</p>
+        <a class="btn btn-outline-dark" asp-page="/Index">Tillbaka till startsidan</a>
     }
     else
     {
