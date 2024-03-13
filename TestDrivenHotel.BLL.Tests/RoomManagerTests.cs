@@ -26,8 +26,8 @@ namespace TestDrivenHotel.BLL.Tests
         {
             //Given
             RoomManager roomManager = new();
-            Room? actualRoom = new Room(1, "Single");
-            actualRoom.Bookings.Add(new Booking(new DateTime(2024, 3, 1), "John Doe"));
+            Room? actualRoom = roomManager.db.Rooms.First();
+            actualRoom.Bookings.Add(new Booking(actualRoom, new DateTime(2024, 3, 1), "John Doe", roomManager.db.BookingReferenceCount));
 
             //When
             Room room = roomManager.db.Rooms.Where(r => r.Id == 1).FirstOrDefault();
@@ -50,7 +50,7 @@ namespace TestDrivenHotel.BLL.Tests
             string result = roomManager.BookRoomById(1, dates, "John Doe");
 
             //Then
-            result.Should().Be(expectedResult);
+            result.Should().StartWith(expectedResult);
         }
 
         [Fact]
@@ -97,7 +97,7 @@ namespace TestDrivenHotel.BLL.Tests
             string result = roomManager.BookRoomById(1, dates, "John Doe");
 
             //Then
-            result.Should().Be(expectedResult);
+            result.Should().StartWith(expectedResult);
         }
 
         [Fact]
@@ -106,7 +106,7 @@ namespace TestDrivenHotel.BLL.Tests
             //Given
             RoomManager roomManager = new();
             Room bookedRoom = roomManager.db.Rooms.Where(r => r.Id == 1).FirstOrDefault();
-            bookedRoom.Bookings.Add(new Booking(new DateTime(2024, 3, 2), "John Doe"));
+            bookedRoom.Bookings.Add(new Booking(bookedRoom, new DateTime(2024, 3, 2), "John Doe", roomManager.db.BookingReferenceCount));
 
             List<DateTime> dates = new() { new DateTime(2024, 3, 1), new DateTime(2024, 3, 2), new DateTime(2024, 3, 3) };
 
@@ -202,6 +202,37 @@ namespace TestDrivenHotel.BLL.Tests
             //THen
             actualResult.Count().Should().Be(8);
             actualResult.Should().OnlyContain(room => room.Type == "Single");
+        }
+
+        [Fact]
+        public void ReturnBookingsByBookingNameAndReference_CorrectInputs_ShouldReturnListOfBookingAndMessage()
+        {
+            //Given
+            RoomManager roomManager = new();
+            List<DateTime> dates = new() { new DateTime(2024, 3, 1), new DateTime(2024, 3, 2), new DateTime(2024, 3, 3) };
+            roomManager.BookRoomById(1, dates, "Fantomen");
+            int referenceNumber = 1000; //Default för varje roomManager
+
+            //When
+            var result = roomManager.ReturnBookingsByBookingNameAndReference(referenceNumber, "Fantomen");
+
+            //THen
+            result.Bookings.Should().NotBeNull();
+            result.Bookings.FirstOrDefault().BookingReference.Should().Be(1000);
+            result.Message.Should().Be("Room found");
+        }
+
+        [Fact]
+        public void ReturnBookingsByBookingNameAndReference_CorrectInputsNoBooking_ShouldReturnNullAndMessage()
+        {
+            //Given
+            RoomManager roomManager = new();
+
+            //When
+            var result = roomManager.ReturnBookingsByBookingNameAndReference(1, "Max");
+            //Then
+            result.Bookings.Should().BeNullOrEmpty();
+            result.Message.Should().Be("Room not found");
         }
     }
 }

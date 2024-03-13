@@ -19,6 +19,14 @@ namespace TestDrivenHotel.UI.Pages
         [BindProperty]
         public bool DoubleRoom { get; set; }
         public bool CheckAvailabilityPressed { get; set; }
+        public bool FindBookingPressed { get; set; }
+        [BindProperty]
+        public string Name { get; set; }
+        [BindProperty]
+        public int ReferenceNumber { get; set; }
+
+        public List<Booking>? FoundBookings { get; set; }
+        public string? FoundBookingMessage { get; set; }
 
         public List<DateTime>? Dates
         {
@@ -32,6 +40,7 @@ namespace TestDrivenHotel.UI.Pages
         public void OnGet()
         {
             CheckAvailabilityPressed = false;
+            FindBookingPressed = false;
             if (Rooms == null)
             {
                 if (Dates == null)
@@ -61,9 +70,22 @@ namespace TestDrivenHotel.UI.Pages
                 case "BookRoom Double":
                     myAction = BookRoom("Double");
                     break;
+                case "FindBooking":
+                    FindBooking();
+                    break;
             }
             return myAction;
         }
+
+        private IActionResult? FindBooking()
+        {
+            FindBookingPressed = true;
+            var result = manager.ReturnBookingsByBookingNameAndReference(ReferenceNumber, Name);
+            FoundBookings = result.Bookings;
+            FoundBookingMessage = result.Message;
+            return null;
+        }
+
         public void pressCheckAvailability()
         {
             Dates = DateManager.ReturnListOfDateTime(StartingDate, EndingDate);

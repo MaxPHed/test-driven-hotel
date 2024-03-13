@@ -1,4 +1,5 @@
-﻿using TestDrivenHotel.Domain;
+﻿using System.Data;
+using TestDrivenHotel.Domain;
 
 namespace TestDrivenHotel.BLL
 {
@@ -39,9 +40,11 @@ namespace TestDrivenHotel.BLL
                 {
                     foreach (var date in dates)
                     {
-                        room.Bookings.Add(new Booking(date, name));
+                        room.Bookings.Add(new Booking(room, date, name, db.BookingReferenceCount));
                     }
-                    return "Booking successfull";
+                    string returnMessage = $"Booking successfull! Booking reference is {db.BookingReferenceCount}";
+                    db.BookingReferenceCount = db.BookingReferenceCount + 1;
+                    return returnMessage;
                 }
                 else { return "Date is already booked"; }
             }
@@ -93,5 +96,22 @@ namespace TestDrivenHotel.BLL
             return true;
         }
 
+        public (List<Booking>? Bookings, string Message) ReturnBookingsByBookingNameAndReference(int referenceNumber, string name)
+        {
+            //Room? booking = db.Rooms.FirstOrDefault(room => room.Bookings.Any(booking => booking.BookingReference == referenceNumber && booking.BookedBy == name));
+            List<Booking>? bookings = db.Rooms
+                .SelectMany(room => room.Bookings)
+                .Where(booking => booking.BookingReference == referenceNumber && booking.BookedBy == name)
+                .ToList();
+
+            if (bookings.Any())
+            {
+                return (bookings, "Room found");
+            }
+            else
+            {
+                return (null, "Room not found");
+            }
+        }
     }
 }

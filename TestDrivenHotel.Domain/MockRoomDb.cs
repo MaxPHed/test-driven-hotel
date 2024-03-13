@@ -3,6 +3,8 @@
     public class MockRoomDb
     {
         public List<Room> Rooms;
+
+        public int BookingReferenceCount = 1000;
         public MockRoomDb()
         {
             if (Rooms == null)

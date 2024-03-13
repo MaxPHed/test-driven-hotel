@@ -52,3 +52,38 @@ else
 {
     <h1>Please choose room type</h1>
 }
+
+
+<form method="post">
+    <div class="form-control">
+        <div class="input-group-lg">
+            <label class="form-label" for="calculation-method">Sök bokning</label>
+        </div>
+        <div class="mt-2 form-control">
+            <label class="form-label" for="name-input">Namn:</label>
+            <input id="name-input" type="text" asp-for="Name" value=""/>
+            <label class="form-label" for="reference-input">Referensnummer:</label>
+            <input id="reference-input" type="text" asp-for="ReferenceNumber" value="" />
+            <button class="btn btn-outline-dark" type="submit" name="action" value="FindBooking">FindBooking</button>
+        </div>
+    </div>
+</form>
+
+@if (Model.FindBookingPressed)
+{
+    <p>@Model.FoundBookingMessage
+    </p>
+    @if (Model.FoundBookingMessage.Equals("Room found"))
+    {
+        <p>Booked by: @(Model.FoundBookings.FirstOrDefault()?.BookedBy
+      )</p>
+        <p>Dates:</p>
+        <ul>
+            @foreach (var booking in Model.FoundBookings)
+            {
+                <li>@booking.BookingDate</li>
+            }
+        </ul>
+    }
+
+}

@@ -41,7 +41,7 @@ namespace TestDrivenHotel.UI.Pages
             if (ValidateName(Name))
             {
                 BookingMessage = manager.BookRoom(Dates, RoomType, Name);
-                if (BookingMessage.Equals("Booking successfull")) { RoomBooked = true; }
+                if (BookingMessage.StartsWith("Booking successfull")) { RoomBooked = true; }
             }
             else { BookingMessage = "Name is too short"; }
         }

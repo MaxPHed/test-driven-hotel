@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestDrivenHotel.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+96457c2c17c4450e89c8035ebb677e2d7ab88b69")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70b51f83ada412e95117449d9e0a0e888872e7c0")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestDrivenHotel.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestDrivenHotel.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

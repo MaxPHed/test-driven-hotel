@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestDrivenHotel.BLL.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a8fb53eefff42cca98572ff9640bc23b8ed0424")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70b51f83ada412e95117449d9e0a0e888872e7c0")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestDrivenHotel.BLL.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestDrivenHotel.BLL.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

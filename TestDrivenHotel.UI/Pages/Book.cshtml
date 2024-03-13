@@ -25,9 +25,7 @@ else
             }
         </ul>
 
-
         <h1>Fyll i ditt namn nedan och tryck bekräfta om du vill göra bokningen</h1>
-
 
         <form method="post">
             <div class="form-control">
@@ -41,9 +39,11 @@ else
 
 @if(Model.BookingMessage != null){
     <h1>@Model.BookingMessage</h1>
-    if (Model.BookingMessage.Equals("Booking successfull"))
+    if (Model.BookingMessage.StartsWith("Booking successfull"))
     {
-        <p>Grattis @Model.Name! Du har bokat ett @Model.RoomType för datumen ovan!</p>
+        <p>Kära @Model.Name! @Model.BookingMessage</p>
+           <p> Du har bokat ett @Model.RoomType</p>
+
         <a class="btn btn-outline-dark" asp-page="/Index">Tillbaka till startsidan</a>
     }
     else

@@ -13,14 +13,6 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering avancerad 2(2)\\Program\\TestDrivenHotel\\TestDrivenHotel.UI\\wwwroot\\js\\book.js",
-      "PackagePath": "staticwebassets\\js\\book.js"
-    },
-    {
-      "Id": "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering avancerad 2(2)\\Program\\TestDrivenHotel\\TestDrivenHotel.UI\\wwwroot\\js\\index.js",
-      "PackagePath": "staticwebassets\\js\\index.js"
-    },
-    {
       "Id": "C:\\Users\\jaama\\Documents\\OOPAI\\Objektorienterad programmering avancerad 2(2)\\Program\\TestDrivenHotel\\TestDrivenHotel.UI\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
