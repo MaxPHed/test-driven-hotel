@@ -3,14 +3,17 @@ using TestDrivenHotel.Domain;
 
 namespace TestDrivenHotel.BLL
 {
-
+    //En instans av klassen Dependency injectas vid varje uppstart av appen.
     public class RoomManager
     {
+        //"Databasen" som mockas av en lista med Room. Blir en ny för varje runtime av appen
         public MockRoomDb db = new();
         public Room? ReturnFirstRoomByType(List<Room> rooms, string roomType)
         {
             return rooms.Where(r => r.Type == roomType).FirstOrDefault();
         }
+
+        //Metoden som hanterar förfrågningar från UI-lager.
         public string BookRoom(List<DateTime> dates, string roomType, string name)
         {
             try
@@ -23,6 +26,7 @@ namespace TestDrivenHotel.BLL
             catch (Exception ex)
             { return ex.Message; };
         }
+
         public string BookRoomById(int roomNumber, List<DateTime> dates, string name)
         {
             try
@@ -43,6 +47,7 @@ namespace TestDrivenHotel.BLL
                         room.Bookings.Add(new Booking(room, date, name, db.BookingReferenceCount));
                     }
                     string returnMessage = $"Booking successfull! Booking reference is {db.BookingReferenceCount}";
+                    //Uppdaterar referensnummer med en för varje bokning.
                     db.BookingReferenceCount = db.BookingReferenceCount + 1;
                     return returnMessage;
                 }
@@ -62,7 +67,7 @@ namespace TestDrivenHotel.BLL
             return isAvailable;
         }
 
-        public List<Room> returnAllRooms()
+        public List<Room> ReturnAllRooms()
         {
             return db.Rooms;
         }
@@ -94,6 +99,7 @@ namespace TestDrivenHotel.BLL
 
         public (List<Booking>? Bookings, string Message) ReturnBookingsByBookingNameAndReference(int referenceNumber, string name)
         {
+
             //Room? booking = db.Rooms.FirstOrDefault(room => room.Bookings.Any(booking => booking.BookingReference == referenceNumber && booking.BookedBy == name));
             List<Booking>? bookings = db.Rooms
                 .SelectMany(room => room.Bookings)

@@ -13,7 +13,7 @@ namespace TestDrivenHotel.BLL.Tests
             List<Room> actualRooms = roomManager.db.Rooms;
 
             //When
-            List<Room> result = roomManager.returnAllRooms();
+            List<Room> result = roomManager.ReturnAllRooms();
 
             //Then
             result.Should().NotBeNull();
@@ -128,7 +128,7 @@ namespace TestDrivenHotel.BLL.Tests
 
             //When
             List<Room> expectedRooms = roomManager.ReturnAllAvailableRooms(dates, null);
-            List<Room> availableRooms = roomManager.returnAllRooms();
+            List<Room> availableRooms = roomManager.ReturnAllRooms();
 
             expectedRooms.Should().BeEquivalentTo(availableRooms);
         }
@@ -235,6 +235,5 @@ namespace TestDrivenHotel.BLL.Tests
             result.Message.Should().Be("Room not found");
         }
 
-        //TODO SKriv test för bokningsreferenssökning.
     }
 }

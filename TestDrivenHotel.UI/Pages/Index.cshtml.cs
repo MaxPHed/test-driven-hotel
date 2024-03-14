@@ -45,7 +45,7 @@ namespace TestDrivenHotel.UI.Pages
             {
                 if (Dates == null)
                 {
-                    Rooms = manager.returnAllRooms();
+                    Rooms = manager.ReturnAllRooms();
                 }
                 else
                 {
@@ -56,7 +56,8 @@ namespace TestDrivenHotel.UI.Pages
 
         public IActionResult OnPost()
         {
-
+            //Switchmetoden tar en string från objekten som initierar den och kör metod utifrån det
+            //Att hela OnPost är en IActionResult är för att kunna länga genom en button. Hade nog varit snyggare att ha en a-tagg som ser ut som en knapp istället då alla knappar inte går till en länk.
             string action = Request.Form["action"];
             IActionResult myAction = null;
             switch (action)
