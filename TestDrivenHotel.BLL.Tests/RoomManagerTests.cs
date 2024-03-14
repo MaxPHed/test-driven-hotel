@@ -6,7 +6,7 @@ namespace TestDrivenHotel.BLL.Tests
     public class RoomManagerTests
     {
         [Fact]
-        public void returnAllRooms_shouldReturnAllRooms()
+        public void ReturnAllRooms_shouldReturnAllRooms()
         {
             //Given
             RoomManager roomManager = new RoomManager();
@@ -22,7 +22,7 @@ namespace TestDrivenHotel.BLL.Tests
         }
 
         [Fact]
-        public void bookRoom_shouldBookRoomOnSpecifiedDate()
+        public void BookRoomById_shouldBookRoomOnSpecifiedDate()
         {
             //Given
             RoomManager roomManager = new();
@@ -39,7 +39,7 @@ namespace TestDrivenHotel.BLL.Tests
         }
 
         [Fact]
-        public void bookRoom_DateIsAvailable_ShouldBookIfRoomIsAvailableAndReturnSuccessMessage()
+        public void BookRoomById_DateIsAvailable_ShouldBookIfRoomIsAvailableAndReturnSuccessMessage()
         {
             //Given
             RoomManager roomManager = new();
@@ -54,7 +54,7 @@ namespace TestDrivenHotel.BLL.Tests
         }
 
         [Fact]
-        public void bookRoom_DateIsNotAvailable_ShouldBookIfRoomIsAvailableAndReturnErrorMessage()
+        public void BookRoomById_DateIsNotAvailable_ShouldBookIfRoomIsAvailableAndReturnErrorMessage()
         {
             //Given
             RoomManager roomManager = new();
@@ -70,7 +70,7 @@ namespace TestDrivenHotel.BLL.Tests
         }
 
         [Fact]
-        public void bookRoom_RoomIsNotFound_ShouldThrowException()
+        public void BookRoomById_RoomIsNotFound_ShouldThrowException()
         {
             //Given
             RoomManager roomManager = new();
@@ -86,7 +86,7 @@ namespace TestDrivenHotel.BLL.Tests
         }
 
         [Fact]
-        public void bookRoom_MultipleAvailableDates_ShouldBookRooms()
+        public void BookRoomById_MultipleAvailableDates_ShouldBookRooms()
         {
             //Given
             RoomManager roomManager = new();
@@ -101,7 +101,7 @@ namespace TestDrivenHotel.BLL.Tests
         }
 
         [Fact]
-        public void bookRoom_OneOfThreeDatesAreUnavailable_ShoulReturnErrorMessage()
+        public void BookRoomId_OneOfThreeDatesAreUnavailable_ShoulReturnErrorMessage()
         {
             //Given
             RoomManager roomManager = new();
@@ -234,5 +234,7 @@ namespace TestDrivenHotel.BLL.Tests
             result.Bookings.Should().BeNullOrEmpty();
             result.Message.Should().Be("Room not found");
         }
+
+        //TODO SKriv test för bokningsreferenssökning.
     }
 }

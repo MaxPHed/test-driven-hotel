@@ -59,7 +59,6 @@ namespace TestDrivenHotel.BLL
             {
                 if (b.BookingDate == date) { isAvailable = false; }
             }
-
             return isAvailable;
         }
 
@@ -88,10 +87,7 @@ namespace TestDrivenHotel.BLL
         {
             foreach (var date in dates)
             {
-                if (!RoomIsAvailable(room, date))
-                {
-                    return false;
-                }
+                if (!RoomIsAvailable(room, date)) return false;
             }
             return true;
         }
@@ -104,14 +100,8 @@ namespace TestDrivenHotel.BLL
                 .Where(booking => booking.BookingReference == referenceNumber && booking.BookedBy == name)
                 .ToList();
 
-            if (bookings.Any())
-            {
-                return (bookings, "Room found");
-            }
-            else
-            {
-                return (null, "Room not found");
-            }
+            if (bookings.Any()) return (bookings, "Room found");
+            else return (null, "Room not found");
         }
     }
 }
